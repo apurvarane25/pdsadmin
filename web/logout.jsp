@@ -1,6 +1,6 @@
 <%-- 
-    Document   : validate3
-    Created on : 5 Jan, 2017, 3:38:40 PM
+    Document   : logout
+    Created on : 11 Jan, 2017, 8:36:40 PM
     Author     : HP
 --%>
 
@@ -13,5 +13,11 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <%
+session.invalidate();
+out.println("You have been successfully logged out");
+response.sendRedirect("login.jsp");
+%>
+        
     </body>
 </html>

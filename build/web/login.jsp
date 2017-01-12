@@ -14,23 +14,23 @@
         <title>Login</title>
     </head>
     <body>
-        <h1>Administration</h1>
+        <h1>Administration Login </h1>
         
 
         
-           <form method="post" action="validate2.jsp">
+           <form method="post" action="http://localhost:8080/pdsadmin/finval.jsp">
              
                
-               <table border="2" width="2" cellspacing="1" cellpadding="1">
+               <table border="0" width="2" cellspacing="10" cellpadding="1">
                   
                   <tbody>
                        <tr>
                            <td>Enter username</td>
-                           <td><input type="text" name="username" ></td>
+                           <td><input type="text" name="v1" ></td>
                        </tr>
                        <tr>
                            <td>Enter Password</td>
-                           <td><input type="password" name="pasword"></td>
+                           <td><input type="password" name="v2"></td>
                        </tr>
                        
                     

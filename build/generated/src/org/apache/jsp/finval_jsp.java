@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import java.sql.*;
 
-public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class finval_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -42,7 +42,8 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write('\n');
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -51,39 +52,51 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Login</title>\n");
+      out.write("        <title>Validation</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <h1>Administration Login </h1>\n");
+      out.write("       \n");
       out.write("        \n");
+      out.write("        ");
+
+        String username= request.getParameter("v1");
+        String password= request.getParameter("v2");
+        
+        
       out.write("\n");
       out.write("        \n");
-      out.write("           <form method=\"post\" action=\"http://localhost:8080/pdsadmin/finval.jsp\">\n");
-      out.write("             \n");
-      out.write("               \n");
-      out.write("               <table border=\"0\" width=\"2\" cellspacing=\"10\" cellpadding=\"1\">\n");
-      out.write("                  \n");
-      out.write("                  <tbody>\n");
-      out.write("                       <tr>\n");
-      out.write("                           <td>Enter username</td>\n");
-      out.write("                           <td><input type=\"text\" name=\"v1\" ></td>\n");
-      out.write("                       </tr>\n");
-      out.write("                       <tr>\n");
-      out.write("                           <td>Enter Password</td>\n");
-      out.write("                           <td><input type=\"password\" name=\"v2\"></td>\n");
-      out.write("                       </tr>\n");
-      out.write("                       \n");
-      out.write("                    \n");
+      out.write("        ");
+
+        
+        try{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection("jdbc:mysql://pothole.cpel76oxpjoj.us-west-2.rds.amazonaws.com:3306/pothole?zeroDateTimeBehavior=convertToNul","potholedetector","jackjain");
+        PreparedStatement ps= con.prepareStatement("SELECT * FROM tab WHERE email=? and password=?");
+        ps.setString(1,username);
+        ps.setString(2,password);
+        ResultSet rs= ps.executeQuery();
+        
+        if(rs.next())
+        {
+            session.setAttribute("name",username);
+            response.sendRedirect("homepage.jsp");
+        
+        }
+        else
+        { response.sendRedirect("error.jsp");
+        }
+        rs.close();
+        ps.close();
+        }catch(SQLException  e) {}  
+        
       out.write("\n");
-      out.write("                       \n");
-      out.write("                       <tr>\n");
-      out.write("                           <td></td>\n");
-      out.write("                           <td><input type=\"submit\" value=\"Login\" /></td>\n");
-      out.write("                       </tr>\n");
-      out.write("                   </tbody>\n");
-      out.write("               </table>\n");
-      out.write("               </form>\n");
-      out.write("             \n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("        \n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

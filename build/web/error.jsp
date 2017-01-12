@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>error</h1>
+        <h1>Username or Password Incorrect. Please try again</h1>
+        
+        <p> <a href="login.jsp">Try again</a> </p>
     </body>
 </html>

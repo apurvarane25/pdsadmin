@@ -51,7 +51,26 @@ public final class homepage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <h1>Homepage</h1>\n");
+      out.write("        <p>Homepage\n");
+      out.write("            \n");
+      out.write("            Logged in as : ");
+      out.print( session.getAttribute("name"));
+      out.write(" </p>\n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("        <table border=\"0\" width=\"4\" cellspacing=\"10\" cellpadding=\"10\" bgcolor=\"bisque\">\n");
+      out.write("          \n");
+      out.write("            <tbody>\n");
+      out.write("                <tr>\n");
+      out.write("                    <td><a href=\"view.jsp\">View Data</a></td>\n");
+      out.write("                    <td><a href=\"update.jsp\">Update Pothole Status</a></td>\n");
+      out.write("                    <td><a href=\"report.jsp\">Generate Report</a></td>\n");
+      out.write("                    <td><a href=\"logout.jsp\">Logout</a></td>\n");
+      out.write("                </tr>\n");
+      out.write("            </tbody>\n");
+      out.write("        </table>\n");
+      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

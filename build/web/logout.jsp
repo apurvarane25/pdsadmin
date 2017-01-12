@@ -1,6 +1,6 @@
 <%-- 
-    Document   : error
-    Created on : 5 Jan, 2017, 12:13:50 AM
+    Document   : logout
+    Created on : 11 Jan, 2017, 8:36:40 PM
     Author     : HP
 --%>
 
@@ -12,8 +12,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Username or Password Incorrect. Please try again</h1>
+        <h1>Hello World!</h1>
+        <%
+session.invalidate();
+out.println("You have been successfully logged out");
+response.sendRedirect("login.jsp");
+%>
         
-        <p> <a href="login.jsp">Try again</a> </p>
     </body>
 </html>

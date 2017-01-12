@@ -10,8 +10,8 @@ public final class validate2_jsp extends org.apache.jasper.runtime.HttpJspBase
 
  
             
-            String userdb;
-            String passdb;
+            String userdb=null;
+            String passdb=null;
         
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
@@ -69,7 +69,7 @@ public final class validate2_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        ");
 
         Connection con= null;
-        Statement st= null;
+        PreparedStatement st= null;
         ResultSet rs=null;
         
         String url= "jdbc:mysql://localhost:3306/login" ;
@@ -90,21 +90,22 @@ public final class validate2_jsp extends org.apache.jasper.runtime.HttpJspBase
       { //start first if
      try { //start try
           Class.forName(driverName).newInstance();
+          
        con= DriverManager.getConnection(url, myuser, mypass);
        
-//       st=con.prepareStatement(sql);
-//       st.setString(1,username);
-//       st.setString(2,password);
+    st=con.prepareStatement("SELECT * FROM newtab WHERE username=? and password=?");
+     st.setString(1,userdb);
+     st.setString(2,passdb);
        
-       st=con.createStatement();
+       //st=con.createStatement();
     
        rs=st.executeQuery("SELECT * FROM newtab WHERE username='"+username+"' and password='"+password+"'");
        
        if(rs.next())
        { //start second if
            
-        //userdb=rs.getString("username");
-        // passdb=rs.getString("password");
+        userdb=rs.getString("userdb");
+         passdb=rs.getString("passdb");
          
         // if(username.equals(userdb) && password.equals(passdb))
          //    start third if
